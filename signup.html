@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | VaultCard Marketplace</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C1121F',
+                        crimson: '#780000',
+                        darkbg: '#050505',
+                        panel: '#111111'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body { 
+            overflow-x: hidden; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Sharp Button Hover Effect */
+        .vault-btn {
+            background-color: #C1121F;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .vault-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #780000;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        .vault-btn:hover::before {
+            left: 0;
+        }
+
+        /* Custom Checkbox */
+        input[type="checkbox"] {
+            accent-color: #C1121F;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-darkbg text-black dark:text-white font-sans antialiased min-h-screen flex">
+
+    <div class="absolute top-6 left-6 right-6 flex justify-between items-center z-50">
+        <a href="index.html" class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors bg-white/90 dark:bg-black/80  ">
+        </a>
+
+        <div class="flex items-center gap-2 bg-white/90 dark:bg-black/80 backdrop-blur-md p-1 rounded-sm border border-gray-200 dark:border-gray-800 shadow-sm">
+            <button id="rtlToggle" class="w-8 h-8 flex items-center justify-center rounded-sm text-black dark:text-white hover:text-primary transition-colors">
+                <span class="text-[10px] font-black rtl-text">RTL</span>
+            </button>
+            <div class="w-px h-4 bg-gray-300 dark:bg-gray-700"></div>
+            <button id="darkToggle" class="w-8 h-8 flex items-center justify-center rounded-sm text-black dark:text-white hover:text-primary transition-colors">
+                <i id="darkIcon" class="fas fa-moon text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex w-full min-h-screen">
+        
+        <div class="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 sm:px-12 lg:px-16 xl:px-24 bg-white dark:bg-darkbg relative z-10 pt-24 pb-12 lg:py-0">
+            
+            <div class="w-full max-w-md">
+                <div class="text-center mb-8">
+                    <a href="index.html" class="inline-flex items-center space-x-2 rtl:space-x-reverse mb-6">
+                        <i class="fas fa-layer-group text-3xl text-primary"></i>
+                        <span class="text-2xl font-black tracking-tight uppercase text-black dark:text-white">
+                            Vault<span class="text-primary">Card</span>
+                        </span>
+                    </a>
+                    <h1 class="text-2xl font-black uppercase tracking-tighter text-black dark:text-white mb-2">Create Your Legacy</h1>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">Apply for a collector account</p>
+                </div>
+
+                <form class="space-y-4" onsubmit="event.preventDefault();">
+                    
+<div class="grid grid-cols-1 gap-4">
+                        <div>
+                            <label for="Full Name" class="block text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2 pl-1">Full Name</label>
+                            <div class="relative">
+                                <i class="fas fa-user absolute left-4 top-3.5 text-gray-400 text-sm"></i>
+                                <input type="text" id="firstName" required placeholder="Michael" 
+                                    class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-[#111] border border-gray-300 dark:border-gray-800 rounded-sm focus:border-primary focus:ring-0 text-black dark:text-white outline-none font-bold text-sm transition-all shadow-sm">
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                  
+
+                    <div>
+                        <label for="password" class="block text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2 pl-1">Password</label>
+                        <div class="relative">
+                            <i class="fas fa-lock absolute left-4 top-3.5 text-gray-400 text-sm"></i>
+                            <input type="password" id="password" required placeholder="••••••••••••" 
+                                class="w-full pl-10 pr-10 py-3 bg-gray-50 dark:bg-[#111] border border-gray-300 dark:border-gray-800 rounded-sm focus:border-primary focus:ring-0 text-black dark:text-white outline-none font-bold text-sm transition-all shadow-sm">
+                            <button type="button" class="togglePassword absolute right-4 top-3.5 text-gray-400 hover:text-primary transition-colors" data-target="password">
+                                <i class="fas fa-eye text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="confirmPassword" class="block text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2 pl-1">Confirm Password</label>
+                        <div class="relative">
+                            <i class="fas fa-lock absolute left-4 top-3.5 text-gray-400 text-sm"></i>
+                            <input type="password" id="confirmPassword" required placeholder="••••••••••••" 
+                                class="w-full pl-10 pr-10 py-3 bg-gray-50 dark:bg-[#111] border border-gray-300 dark:border-gray-800 rounded-sm focus:border-primary focus:ring-0 text-black dark:text-white outline-none font-bold text-sm transition-all shadow-sm">
+                            <button type="button" class="togglePassword absolute right-4 top-3.5 text-gray-400 hover:text-primary transition-colors" data-target="confirmPassword">
+                                <i class="fas fa-eye text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start py-2">
+                        <input id="terms" type="checkbox" required class="w-4 h-4 mt-0.5 border-gray-300 rounded-sm bg-gray-50 dark:bg-[#111] focus:ring-primary cursor-pointer">
+                        <label for="terms" class="ml-2 text-xs font-bold text-gray-600 dark:text-gray-400 cursor-pointer leading-relaxed">
+                            I agree to the VaultCard <a href="#" class="text-primary hover:underline">Terms of Service</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a>.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="vault-btn w-full py-4 text-white font-black uppercase tracking-widest text-xs rounded-sm shadow-xl mt-2">
+                        Sign Up
+                    </button>
+                </form>
+
+                <div class="my-6 flex items-center">
+                    <div class="flex-grow border-t border-gray-200 dark:border-gray-800"></div>
+                    <span class="px-4 text-[10px] font-black uppercase tracking-widest text-gray-400">Or sign up with</span>
+                    <div class="flex-grow border-t border-gray-200 dark:border-gray-800"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="flex justify-center items-center gap-2 py-3 border border-gray-300 dark:border-gray-800 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
+                        <i class="fab fa-google text-black dark:text-white"></i>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-black dark:text-white">Google</span>
+                    </button>
+                    <button class="flex justify-center items-center gap-2 py-3 border border-gray-300 dark:border-gray-800 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
+                        <i class="fab fa-apple text-black dark:text-white"></i>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-black dark:text-white">Apple</span>
+                    </button>
+                </div>
+
+                <p class="text-center text-xs font-bold text-gray-500 mt-8">
+                    Already have an account? 
+                    <a href="login.html" class="text-primary hover:underline ml-1 uppercase tracking-wider font-black">Log In</a>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="hidden lg:flex lg:w-1/2 relative bg-black overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2805&auto=format&fit=crop')] bg-cover bg-center opacity-70 scale-105 transform hover:scale-100 transition-transform duration-[10s]"></div>
+            
+            <div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent dark:from-[#050505] dark:via-[#050505]/50 transition-colors duration-300"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent mix-blend-multiply"></div>
+
+            <div class="absolute top-1/4 right-0 w-[40rem] h-[40rem] bg-primary/20 blur-[150px] rounded-full pointer-events-none mix-blend-screen"></div>
+
+            <div class="absolute bottom-16 left-16 z-20 max-w-lg">
+                <div class="w-12 h-1.5 bg-primary mb-6"></div>
+                <h2 class="text-4xl font-black uppercase tracking-tighter text-white leading-tight mb-4 drop-shadow-lg">
+                    Build a world-class <br> investment portfolio.
+                </h2>
+                <p class="text-sm font-bold text-gray-300 tracking-wide leading-relaxed drop-shadow-md">
+                    Access exclusive sealed wax drops, premium graded singles, and historic memorabilia auctions directly from the Vault.
+                </p>
+            
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- THEME LOGIC ---
+            const htmlElement = document.documentElement;
+            const darkToggle = document.getElementById("darkToggle");
+            const darkIcon = document.getElementById("darkIcon");
+
+            function applyTheme() {
+                let isDark = localStorage.getItem('VaultCard-dark') === 'true';
+                if (isDark) {
+                    htmlElement.classList.add('dark');
+                    if (darkIcon) darkIcon.className = 'fas fa-sun text-sm';
+                } else {
+                    htmlElement.classList.remove('dark');
+                    if (darkIcon) darkIcon.className = 'fas fa-moon text-sm';
+                }
+            }
+
+            function toggleTheme() {
+                const isDark = htmlElement.classList.toggle('dark');
+                localStorage.setItem('VaultCard-dark', isDark);
+                if (darkIcon) darkIcon.className = isDark ? 'fas fa-sun text-sm' : 'fas fa-moon text-sm';
+            }
+
+            if (darkToggle) darkToggle.addEventListener('click', toggleTheme);
+            applyTheme(); // Init theme
+
+
+            // --- RTL LOGIC ---
+            const rtlToggle = document.getElementById("rtlToggle");
+            const rtlText = rtlToggle?.querySelector(".rtl-text");
+
+            function applyRTL() {
+                let isRTL = localStorage.getItem('VaultCard-rtl') === 'true';
+                htmlElement.dir = isRTL ? "rtl" : "ltr";
+                if (rtlText) rtlText.textContent = isRTL ? "LTR" : "RTL";
+            }
+
+            function toggleRTL() {
+                const isRTL = htmlElement.dir === "rtl";
+                htmlElement.dir = isRTL ? "ltr" : "rtl";
+                if (rtlText) rtlText.textContent = isRTL ? "RTL" : "LTR";
+                localStorage.setItem("VaultCard-rtl", !isRTL);
+            }
+
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            applyRTL(); // Init RTL
+
+
+            // --- PASSWORD VISIBILITY TOGGLES ---
+            const togglePasswordBtns = document.querySelectorAll('.togglePassword');
+
+            togglePasswordBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Find the target input based on data-target attribute
+                    const targetId = e.currentTarget.getAttribute('data-target');
+                    const passwordInput = document.getElementById(targetId);
+                    const toggleIcon = e.currentTarget.querySelector('i');
+
+                    if (passwordInput && toggleIcon) {
+                        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                        passwordInput.setAttribute('type', type);
+                        
+                        if (type === 'text') {
+                            toggleIcon.classList.remove('fa-eye');
+                            toggleIcon.classList.add('fa-eye-slash');
+                        } else {
+                            toggleIcon.classList.remove('fa-eye-slash');
+                            toggleIcon.classList.add('fa-eye');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

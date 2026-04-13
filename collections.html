@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections </title>
+    
+ <script src="tailwind.js"></script>
+  <script>
+    // Configuration for Tailwind: This MUST remain to allow the manual Light/Dark mode toggle
+    // and to ensure the site defaults to Light Mode regardless of your operating system settings.
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link rel="icon" href="images\logo.png">     <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C1121F',
+                        crimson: '#780000',
+                        darkbg: '#050505',
+                        panel: '#111111'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body { 
+            overflow-x: hidden; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .vault-btn {
+            background-color: #C1121F;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .vault-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #780000;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        .vault-btn:hover::before {
+            left: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-darkbg text-black dark:text-white font-sans antialiased flex flex-col min-h-screen">
+
+    <div id="navbar"></div>
+
+  <section class="relative w-full min-h-[65vh] lg:min-h-[95vh] flex items-center bg-[url('images/discover.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed overflow-hidden pt-24 pb-16 border-b border-gray-200 dark:border-gray-800">
+    
+    <div class="absolute inset-0 bg-black/60 dark:bg-[#050505]/75 backdrop-blur-[2px] transition-colors duration-300"></div>
+
+    <div class="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-[#C1121F]/15 blur-[150px] rounded-full pointer-events-none mix-blend-screen"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+            <div class="lg:col-span-6 lg:pr-10 text-center lg:text-left flex flex-col items-center lg:items-start">
+                
+                <div class="inline-flex items-center space-x-2 bg-white/50 dark:bg-black/50 backdrop-blur-md border border-gray-300 dark:border-white/10 px-4 py-1.5 rounded-sm mb-6 shadow-sm">
+                    <i class="fas fa-layer-group text-[#C1121F]"></i>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-black dark:text-gray-200">Curated Exhibitions</span>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-white dark:text-white leading-[1.05] mb-6 drop-shadow-sm">
+                    The <br class="hidden sm:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#C1121F] to-[#780000]">Collections.</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-white dark:text-gray-300 font-bold mb-10 max-w-lg leading-relaxed drop-shadow-sm">
+                    Explore masterfully assembled portfolios. From the origins of pre-war vintage to the modern insert craze, discover the history of the hobby curated by VaultCard experts.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <button class="px-8 py-4 bg-[#C1121F] hover:bg-[#780000] text-white font-black uppercase tracking-widest text-xs rounded-sm shadow-lg shadow-[#C1121F]/20 hover:-translate-y-0.5 transition-all">
+                        <a href="shop.html">Browse All Vaults</a>
+                    </button>
+                    <button class="px-8 py-4 bg-transparent border-2 border-gray-300 dark:border-gray-700 text-white dark:text-white font-black uppercase tracking-widest text-xs rounded-sm hover:border-[#C1121F] dark:hover:border-[#C1121F] hover:text-[#C1121F] dark:hover:text-[#C1121F] transition-all">
+                        <a href="auction.html">View Curator's Picks</a>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 mt-12 lg:mt-0 flex justify-center items-center perspective-1000 h-[350px] sm:h-[450px] relative">
+                
+                <div class="absolute w-48 sm:w-64 aspect-[4/3] bg-black border border-gray-300 dark:border-gray-700 rounded-sm shadow-xl -translate-x-12 sm:-translate-x-24 -translate-y-8 -rotate-12 z-10 opacity-60 hover:opacity-100 hover:rotate-0 hover:z-40 transition-all duration-500 cursor-pointer group overflow-hidden">
+                    <img src="images/basketball_grail.png" alt="Modern Collection" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <span class="px-2 py-1 bg-white text-black text-[8px] font-black uppercase tracking-widest rounded-sm mb-2 inline-block">156 Assets</span>
+                        <h3 class="text-white font-black uppercase tracking-tighter text-sm">90s Inserts</h3>
+                    </div>
+                </div>
+
+                <div class="absolute w-48 sm:w-64 aspect-[4/3] bg-black border border-gray-300 dark:border-gray-700 rounded-sm shadow-xl translate-x-12 sm:translate-x-24 -translate-y-8 rotate-12 z-10 opacity-60 hover:opacity-100 hover:rotate-0 hover:z-40 transition-all duration-500 cursor-pointer group overflow-hidden">
+                    <img src="images/modern_soccer.png" alt="Memorabilia Collection" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay grayscale group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <span class="px-2 py-1 bg-blue-600 text-white text-[8px] font-black uppercase tracking-widest rounded-sm mb-2 inline-block">89 Assets</span>
+                        <h3 class="text-white font-black uppercase tracking-tighter text-sm">Gem Mint Modern</h3>
+                    </div>
+                </div>
+
+                <div class="absolute w-56 sm:w-80 aspect-[4/3] bg-[#050505] border-2 border-[#C1121F]/50 rounded-sm shadow-[0_20px_50px_rgba(193,18,31,0.25)] z-30 transition-transform duration-500 hover:-translate-y-4 cursor-pointer group overflow-hidden">
+                    
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1.5 bg-[#C1121F] text-white text-[9px] font-black uppercase tracking-widest rounded-sm shadow-md">Featured Vault</span>
+                    </div>
+
+                    <img src="images/vintage_t206.png" alt="Vintage Collection" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 w-full p-6">
+                        <h3 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tighter mb-1 drop-shadow-lg group-hover:text-[#C1121F] transition-colors">
+                            Pre-War Vintage
+                        </h3>
+                        <p class="text-gray-300 text-xs font-bold mb-4 line-clamp-1">Tobacco cards, cracker jacks, and the foundations of the hobby.</p>
+                        
+                        <div class="flex justify-between items-center border-t border-white/20 pt-4">
+                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">42 Museum-Grade Assets</span>
+                            <i class="fas fa-arrow-right text-[#C1121F] transform -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+
+    <section class="py-20 bg-gray-50 dark:bg-panel border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:items-center md:text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">Browse By Sport</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <a href="memarobilia.html" class="group bg-white dark:bg-darkbg border border-gray-200 dark:border-gray-800 rounded-sm p-8 flex flex-col items-center justify-center text-center hover:border-primary dark:hover:border-primary transition-colors shadow-sm">
+                    <i class="fas fa-basketball-ball text-4xl text-primary dark:text-gray-600 group-hover:text-primary transition-colors mb-4"></i>
+                    <h3 class="font-black uppercase tracking-widest text-sm">Basketball</h3>
+                </a>
+                <a href="memarobilia.html" class="group bg-white dark:bg-darkbg border border-gray-200 dark:border-gray-800 rounded-sm p-8 flex flex-col items-center justify-center text-center hover:border-primary dark:hover:border-primary transition-colors shadow-sm">
+                    <i class="fas fa-baseball-ball text-4xl text-primary dark:text-gray-600 group-hover:text-primary transition-colors mb-4"></i>
+                    <h3 class="font-black uppercase tracking-widest text-sm">Baseball</h3>
+                </a>
+                <a href="memarobilia.html" class="group bg-white dark:bg-darkbg border border-gray-200 dark:border-gray-800 rounded-sm p-8 flex flex-col items-center justify-center text-center hover:border-primary dark:hover:border-primary transition-colors shadow-sm">
+                    <i class="fas fa-football-ball text-4xl text-primary dark:text-gray-600 group-hover:text-primary transition-colors mb-4"></i>
+                    <h3 class="font-black uppercase tracking-widest text-sm">Football</h3>
+                </a>
+                <a href="memarobilia.html" class="group bg-white dark:bg-darkbg border border-gray-200 dark:border-gray-800 rounded-sm p-8 flex flex-col items-center justify-center text-center hover:border-primary dark:hover:border-primary transition-colors shadow-sm">
+                    <i class="fas fa-futbol text-4xl text-primary dark:text-gray-600 group-hover:text-primary transition-colors mb-4"></i>
+                    <h3 class="font-black uppercase tracking-widest text-sm">Soccer</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center justify-center text-center mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">Trending Now</h2>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mt-2">Highest view counts this week</p>
+                </div>
+               
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="border border-gray-200 dark:border-gray-800 rounded-sm p-4 bg-gray-50 dark:bg-panel flex items-center gap-4 group cursor-pointer md:justify-center md:text-center lg:justify-start lg:text-left md:flex-col lg:flex-row">
+                    <div class="w-20 h-24 bg-black rounded-sm overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1558227691-41ea78d1f631?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:text-primary transition-colors">Game-Worn Relics</h4>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">24 Active Lots</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 dark:border-gray-800 rounded-sm p-4 bg-gray-50 dark:bg-panel flex items-center gap-4 group cursor-pointer md:justify-center md:text-center lg:justify-start lg:text-left md:flex-col lg:flex-row">
+                    <div class="w-20 h-24 bg-black rounded-sm overflow-hidden flex-shrink-0 flex items-center justify-center">
+                        <img src="images/img2.avif" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:text-primary transition-colors">Investment Wax</h4>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">12 Active Lots</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 dark:border-gray-800 rounded-sm p-4 bg-gray-50 dark:bg-panel flex items-center gap-4 group cursor-pointer md:justify-center md:text-center lg:justify-start lg:text-left md:flex-col lg:flex-row">
+                    <div class="w-20 h-24 bg-black rounded-sm overflow-hidden flex-shrink-0">
+                        <img src="images\11.avif" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:text-primary transition-colors">Modern Gem Mints</h4>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">89 Active Lots</p>
+                    </div>
+                </div>
+                <!-- New Items -->
+                <div class="border border-gray-200 dark:border-gray-800 rounded-sm p-4 bg-gray-50 dark:bg-panel flex items-center gap-4 group cursor-pointer md:justify-center md:text-center lg:justify-start lg:text-left md:flex-col lg:flex-row">
+                    <div class="w-20 h-24 bg-black rounded-sm overflow-hidden flex-shrink-0">
+                        <img src="images/img7.avif" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:text-primary transition-colors">Vintage Pennants</h4>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">15 Active Lots</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 dark:border-gray-800 rounded-sm p-4 bg-gray-50 dark:bg-panel flex items-center gap-4 group cursor-pointer md:justify-center md:text-center lg:justify-start lg:text-left md:flex-col lg:flex-row">
+                    <div class="w-20 h-24 bg-black rounded-sm overflow-hidden flex-shrink-0">
+                        <img src="images/autograph.webp" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:text-primary transition-colors">Rare Autographs</h4>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">42 Active Lots</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 dark:border-gray-800 rounded-sm p-4 bg-gray-50 dark:bg-panel flex items-center gap-4 group cursor-pointer md:justify-center md:text-center lg:justify-start lg:text-left md:flex-col lg:flex-row">
+                    <div class="w-20 h-24 bg-black rounded-sm overflow-hidden flex-shrink-0">
+                        <img src="images/discover.jpeg" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:text-primary transition-colors">Limited Series Packs</h4>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">7 Active Lots</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white dark:bg-darkbg text-black dark:text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-primary/10 blur-[150px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col items-center text-center justify-center mb-16 gap-6">
+                <div>
+                    <span class="text-primary text-[10px] font-black uppercase tracking-widest block mb-2 border-b-2 border-primary pb-1 inline-block">Staff Selections</span>
+                    <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter">Curator's Picks</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="relative aspect-square md:aspect-[4/5] lg:aspect-square bg-gray-50 dark:bg-[#111] rounded-sm border border-gray-200 dark:border-white/10 p-8 flex items-center justify-center">
+                    <img src="images\img8.jpeg" class="w-2/3 h-auto shadow-[0_20px_50px_rgba(193,18,31,0.2)] transform -rotate-0 hover:rotate-6 transition-transform duration-500">
+                </div>
+                <div class="flex flex-col md:items-center md:text-center lg:items-start lg:text-left">
+                    <div class="inline-block px-3 py-1 bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-white text-[10px] font-black uppercase tracking-widest rounded-sm mb-6 border border-gray-200 dark:border-white/20">PSA 10 GEM MINT</div>
+                    <h3 class="text-3xl lg:text-4xl font-black uppercase tracking-tight leading-tight mb-4">2003 Topps Chrome LeBron James Refractor</h3>
+                    <p class="text-gray-600 dark:text-gray-400 font-bold mb-8 leading-relaxed max-w-lg">"This is arguably the most important modern basketball card in existence. Finding a PSA 10 with this level of centering is a generational opportunity for serious investors." <br><span class="text-primary mt-2 block">— Head of Authentication</span></p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-8 items-center border-t border-gray-200 dark:border-white/10 pt-8 w-full md:justify-center lg:justify-start">
+                        <div class="text-center md:text-center lg:text-left">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">Current Bid</p>
+                            <p class="text-3xl font-black text-black dark:text-white">$125,000</p>
+                        </div>
+                        <button class="vault-btn px-10 py-4 text-white font-black uppercase tracking-widest text-xs rounded-sm shadow-lg w-full sm:w-auto">Place Bid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-24 bg-gray-50 dark:bg-[#0a0a0a] border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 flex flex-col md:items-center md:text-center lg:items-start lg:text-left">
+                    <span class="text-primary text-[10px] font-black uppercase tracking-widest block mb-4 border-b-2 border-primary pb-1 inline-block">Collector Focus</span>
+                    <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tighter mb-8">The Anatomy of a Grail Hunter</h2>
+                    <blockquote class="text-lg sm:text-xl font-bold leading-relaxed mb-8 italic text-gray-600 dark:text-gray-300 relative">
+                        <i class="fas fa-quote-left absolute -top-4 -left-6 text-gray-200 dark:text-gray-800 text-4xl -z-10"></i>
+                        "VaultCard completely changed my approach to investing. The ability to buy an asset and instantly transfer it to the Vault without risking shipping damage has allowed me to scale my collection aggressively."
+                    </blockquote>
+                    <div class="flex items-center gap-4 md:justify-center lg:justify-start">
+                        <div>
+                            <p class="font-black text-sm uppercase">Marcus T.</p>
+                            <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Elite Member Since '26</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 aspect-[4/3] lg:aspect-square bg-gray-200 dark:bg-[#111] rounded-sm border border-gray-300 dark:border-gray-700 overflow-hidden shadow-xl">
+                    <img src="images\auction card.webp" class="w-full h-full object-cover opacity-80 grayscale">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white dark:bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight mb-16">Acquire. Vault. Trade.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-gray-200 dark:bg-gray-800 z-0"></div>
+
+                <div class="relative z-10 flex flex-col items-center group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-white dark:bg-darkbg border-2 border-gray-200 dark:border-gray-800 rounded-full flex items-center justify-center text-primary text-xl font-black mb-6 shadow-sm group-hover:scale-110 group-hover:border-primary group-hover:shadow-md transition-all duration-300">1</div>
+                    <h3 class="text-lg font-black uppercase tracking-wide mb-3 group-hover:text-primary transition-colors duration-300">Win the Auction</h3>
+                    <p class="text-xs font-bold text-gray-500 max-w-xs">Instantly transfer ownership to your digital portfolio while the physical asset remains in our insured, climate-controlled vault.</p>
+                </div>
+                <div class="relative z-10 flex flex-col items-center group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-white dark:bg-darkbg border-2 border-primary rounded-full flex items-center justify-center text-primary text-xl font-black mb-6 shadow-md shadow-primary/20 group-hover:scale-110 group-hover:shadow-primary/40 transition-all duration-300">2</div>
+                    <h3 class="text-lg font-black uppercase tracking-wide mb-3 group-hover:text-primary transition-colors duration-300">Secure in Vault</h3>
+                    <p class="text-xs font-bold text-gray-500 max-w-xs">Instantly transfer ownership to your digital portfolio while the physical asset remains in our insured, climate-controlled vault.</p>
+                </div>
+                <div class="relative z-10 flex flex-col items-center group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-white dark:bg-darkbg border-2 border-gray-200 dark:border-gray-800 rounded-full flex items-center justify-center text-primary text-xl font-black mb-6 shadow-sm group-hover:scale-110 group-hover:border-primary group-hover:shadow-md transition-all duration-300">3</div>
+                    <h3 class="text-lg font-black uppercase tracking-wide mb-3 group-hover:text-primary transition-colors duration-300">Sell or Ship</h3>
+                    <p class="text-xs font-bold text-gray-500 max-w-xs">Instantly transfer ownership to your digital portfolio while the physical asset remains in our insured, climate-controlled vault.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:items-center md:text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">The Word on the Street</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-[#111] border border-white/10 p-8 rounded-sm hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group cursor-default">
+                    <div class="flex gap-1 text-primary mb-4 text-xs group-hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm font-bold text-gray-300 leading-relaxed mb-6">"The authentication process is bulletproof. I never worry about fakes when buying through VaultCard."</p>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-gray-500">- David R.</p>
+                </div>
+                <div class="bg-[#111] border border-white/10 p-8 rounded-sm hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group cursor-default">
+                    <div class="flex gap-1 text-primary mb-4 text-xs group-hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm font-bold text-gray-300 leading-relaxed mb-6">"The authentication process is bulletproof. I never worry about fakes when buying through VaultCard."</p>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-gray-500">- Sarah L.</p>
+                </div>
+                <div class="bg-[#111] border border-white/10 p-8 rounded-sm hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group cursor-default">
+                    <div class="flex gap-1 text-primary mb-4 text-xs group-hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm font-bold text-gray-300 leading-relaxed mb-6">"The authentication process is bulletproof. I never worry about fakes when buying through VaultCard."</p>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-gray-500">- Michael B.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50 dark:bg-darkbg text-center px-4 md:items-center md:text-center">
+        <div class="max-w-4xl mx-auto relative bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-sm p-12 sm:p-20 overflow-hidden shadow-xl">
+            <div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
+            
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter text-black dark:text-white mb-6">
+                Start Building Your Legacy
+            </h2>
+            <p class="text-sm md:text-base font-bold text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
+                Join the premier marketplace for serious collectors and investors. Sign up today to access the Vault.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 w-full md:justify-center">
+                <a href="signup.html" class="vault-btn px-10 py-4 text-white font-black uppercase tracking-widest text-xs rounded-sm shadow-xl w-full sm:w-auto">
+                    Create Account
+                </a>
+                <a href="contact.html" class="px-10 py-4 bg-transparent border-2 border-gray-300 dark:border-gray-700 text-black dark:text-white font-black uppercase tracking-widest text-xs rounded-sm hover:border-black dark:hover:border-white transition-colors w-full sm:w-auto">
+                    Consign With Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+   <div id="footer"></div>
+
+  <script src="navbar.js"></script>
+  <script src="footer.js"></script>
+</body>
+
+</html>

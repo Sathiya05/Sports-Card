@@ -1,0 +1,556 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home 2</title>
+  <script src="tailwind.js"></script>
+  <script>
+    // Configuration for Tailwind: This MUST remain to allow the manual Light/Dark mode toggle
+    // and to ensure the site defaults to Light Mode regardless of your operating system settings.
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link rel="icon" href="images\logo.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <div id="navbar"></div>
+ <section class="relative w-full min-h-[60vh] flex items-center bg-[url('images/img8.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed overflow-hidden pt-28 pb-16 border-b border-gray-200 dark:border-gray-800">
+    
+    <div class="absolute inset-0 bg-black/60 dark:bg-[#050505]/90 transition-colors duration-300"></div>
+
+    <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[#C1121F]/15 blur-[150px] rounded-full pointer-events-none mix-blend-screen"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+            <div class="lg:col-span-6 lg:pr-10 text-center lg:text-left">
+                
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white dark:text-white leading-[1.05] mb-6 drop-shadow-sm">
+                    Vault<span class="text-[#C1121F]">Card</span> <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-200 dark:from-gray-300 dark:to-gray-500">Marketplace</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-gray-200 dark:text-gray-300 font-semibold mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed drop-shadow-sm">
+                    Over 1,200 authenticated assets currently live. Use the filters below to hunt for your next investment-grade addition.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                    <span class="px-4 py-2 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-sm text-xs font-black uppercase tracking-widest text-black dark:text-white shadow-sm">
+                       Trending
+                    </span>
+                    <span class="px-4 py-2 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-sm text-xs font-black uppercase tracking-widest text-black dark:text-white shadow-sm">
+                       Sealed Wax
+                    </span>
+                    <span class="px-4 py-2 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-sm text-xs font-black uppercase tracking-widest text-black dark:text-white shadow-sm">
+                         Vintage Grails
+                    </span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 flex justify-center items-center perspective-1000 mt-8 lg:mt-0">
+                <div class="relative w-full max-w-sm aspect-[4/5] bg-white/95 dark:bg-[#111]/95 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(193,18,31,0.15)] p-4 transform transition-transform duration-700 hover:-translate-y-2 group">
+                    
+                    <div class="absolute -top-4 -right-4 bg-[#C1121F] text-white px-4 py-2 rounded-sm shadow-xl z-20 transform rotate-6">
+                        <span class="text-[10px] font-black uppercase tracking-widest">Auction Highlight</span>
+                    </div>
+
+                    <div class="w-full h-[65%] bg-gradient-to-tr from-blue-800 to-indigo-900 rounded-sm overflow-hidden relative mb-4 border border-gray-200 dark:border-gray-800">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-70 group-hover:scale-110 transition-transform duration-700"></div>
+                    </div>
+
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-[#222] text-[9px] font-bold text-gray-600 dark:text-gray-400 rounded-sm uppercase tracking-widest border border-gray-200 dark:border-gray-700">PSA 10 GEM MINT</span>
+                        <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Lot #1088</span>
+                    </div>
+                    <h3 class="text-lg font-black uppercase text-black dark:text-white leading-tight mb-4 line-clamp-2">
+                        2003 Topps Chrome #111 LeBron James Refractor
+                    </h3>
+                    
+                    <div class="flex justify-between items-end pt-4 border-t border-gray-200 dark:border-gray-800">
+                        <div>
+                            <p class="text-[9px] font-bold uppercase tracking-widest text-gray-500 mb-0.5">Current Bid</p>
+                            <p class="text-xl font-black text-[#C1121F]">$12,500</p>
+                        </div>
+                        <a href="collections.html" class="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-widest rounded-sm hover:bg-[#C1121F] dark:hover:bg-[#C1121F] dark:hover:text-white transition-colors shadow-md">
+                            View Lot
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+  
+  <section class="py-24 bg-white dark:bg-[#0B0B0C] transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white tracking-tight">
+        Shop by Category
+      </h2>
+      <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+        Explore top categories and discover rare collectibles across different sports.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Card -->
+      <div class="relative group overflow-hidden rounded-xl">
+        <img src="images\Sports cards.webp"
+             class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-300"></div>
+
+        <!-- Content -->
+        <div class="absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-1">Sports Cards</h3>
+          <p class="text-white/80 text-sm">Rare & graded cards</p>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="relative group overflow-hidden rounded-xl">
+        <img src="images\img17.avif"
+             class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-300"></div>
+
+        <div class="absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-1">Jerseys</h3>
+          <p class="text-white/80 text-sm">Signed & authentic</p>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="relative group overflow-hidden rounded-xl">
+        <img src="images\img18.avif"
+             class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-300"></div>
+
+        <div class="absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-1">Autographs</h3>
+          <p class="text-white/80 text-sm">Verified signatures</p>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="relative group overflow-hidden rounded-xl">
+        <img src="images\img5.avif"
+             class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-300"></div>
+
+        <div class="absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-1">Memorabilia</h3>
+          <p class="text-white/80 text-sm">Historic collectibles</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="py-24 bg-white dark:bg-[#0B0B0C]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Heading -->
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-black dark:text-white">
+        Explore All Collectibles
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+      <!-- =====================================
+       FILTER SIDEBAR
+      ===================================== -->
+      <div class="lg:col-span-1 space-y-8">
+
+        <!-- Category Filter -->
+        <div>
+          <h3 class="font-bold mb-4">Category</h3>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Sports Cards
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Jerseys
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Autographs
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Memorabilia
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Filter -->
+        <div>
+          <h3 class="font-bold mb-4">Price Range</h3>
+          <input type="range" class="w-full accent-[#C1121F]">
+          <div class="flex justify-between text-xs text-gray-500 mt-2">
+            <span>₹1K</span>
+            <span>₹50K+</span>
+          </div>
+        </div>
+
+        <!-- Condition -->
+        <div>
+          <h3 class="font-bold mb-4">Condition</h3>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Mint
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Near Mint
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="accent-[#C1121F]"> Used
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =====================================
+       PRODUCTS GRID
+      ===================================== -->
+      <div class="lg:col-span-3">
+
+        <!-- Top Bar -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+          
+          <p class="text-sm text-gray-500">
+            Showing 1–12 of 120 results
+          </p>
+
+         
+
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+          <!-- Product -->
+          <div class="bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden group hover:shadow-xl transition">
+            <div class="relative">
+              <img src="images\vintage_t206.png"
+                   class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 bg-[#C1121F] text-white text-xs px-2 py-1 rounded">
+                Hot
+              </span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold mb-1">Rare Rookie Card</h3>
+              <p class="text-xs text-gray-500 mb-3">Graded • PSA 10</p>
+              <div class="flex justify-between items-center">
+                <span class="text-[#C1121F] font-bold">₹15,000</span>
+                <button class="text-xs px-3 py-1 border rounded-full hover:bg-[#C1121F] hover:text-white transition">
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate more cards -->
+
+          <div class="bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden group hover:shadow-xl transition">
+            <div class="relative">
+              <img src="images\img4.avif"
+                   class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold mb-1">Signed Jersey</h3>
+              <p class="text-xs text-gray-500 mb-3">Authenticated</p>
+              <div class="flex justify-between items-center">
+                <span class="text-[#C1121F] font-bold">₹28,000</span>
+                <button class="text-xs px-3 py-1 border rounded-full hover:bg-[#C1121F] hover:text-white transition">
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden group hover:shadow-xl transition">
+            <div class="relative">
+              <img src="images\img19.webp"
+                   class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold mb-1">Autographed Ball</h3>
+              <p class="text-xs text-gray-500 mb-3">Limited Edition</p>
+              <div class="flex justify-between items-center">
+                <span class="text-[#C1121F] font-bold">₹10,500</span>
+                <button class="text-xs px-3 py-1 border rounded-full hover:bg-[#C1121F] hover:text-white transition">
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <section class="py-24 bg-gray-50 dark:bg-[#0B0B0C]">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <!-- Centered Heading -->
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white">
+        Recently Sold
+      </h2>
+      <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm max-w-xl mx-auto">
+        See what collectors are buying right now
+      </p>
+    </div>
+
+    <!-- Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Large Card -->
+      <div class="lg:col-span-2 bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden group hover:shadow-xl transition">
+
+        <div class="grid md:grid-cols-2">
+          
+          <img src="images\michael_jordan_rookie_card_1775714787168.png"
+               class="w-full h-64 md:h-full object-cover group-hover:scale-105 transition duration-500">
+
+          <div class="p-6 flex flex-col justify-center">
+            <span class="text-xs text-green-500 font-semibold mb-2">
+              SOLD
+            </span>
+
+            <h3 class="text-xl font-bold text-black dark:text-white mb-2">
+              Rare Rookie Card (PSA 10)
+            </h3>
+
+            <p class="text-sm text-gray-500 mb-4">
+              Sold to a private collector
+            </p>
+
+            <span class="text-2xl font-bold text-[#C1121F]">
+              ₹45,000
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Small Cards -->
+      <div class="space-y-6">
+
+        <!-- Item -->
+        <div class="flex items-center gap-4 bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:shadow-md transition">
+          <img src="images\img3.avif"
+               class="w-20 h-20 object-cover rounded-lg">
+
+          <div class="flex-1">
+            <h4 class="text-sm font-semibold">Baseball Cards</h4>
+            <p class="text-xs text-gray-500">Sold</p>
+          </div>
+
+          <span class="text-[#C1121F] font-bold text-sm">
+            ₹28,000
+          </span>
+        </div>
+
+        <!-- Item -->
+        <div class="flex items-center gap-4 bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:shadow-md transition">
+          <img src="images\img13.avif"
+               class="w-20 h-20 object-cover rounded-lg">
+
+          <div class="flex-1">
+            <h4 class="text-sm font-semibold">Volley Ball</h4>
+            <p class="text-xs text-gray-500">Sold</p>
+          </div>
+
+          <span class="text-[#C1121F] font-bold text-sm">
+            ₹12,500
+          </span>
+        </div>
+
+        <!-- Item -->
+        <div class="flex items-center gap-4 bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:shadow-md transition">
+          <img src="images\Sports cards.webp"
+               class="w-20 h-20 object-cover rounded-lg">
+
+          <div class="flex-1">
+            <h4 class="text-sm font-semibold">Card Pack</h4>
+            <p class="text-xs text-gray-500">Sold</p>
+          </div>
+
+          <span class="text-[#C1121F] font-bold text-sm">
+            ₹9,800
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="py-24 bg-white dark:bg-[#0B0B0C]">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <!-- Centered Heading -->
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white">
+        Top Collector Picks
+      </h2>
+      <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm max-w-xl mx-auto">
+        Handpicked collectibles chosen by our top buyers
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="space-y-8">
+
+      <!-- Card 1 -->
+      <div class="flex flex-col md:flex-row items-center gap-6 bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-lg transition">
+
+        <img src="images\modern_soccer.png"
+             class="w-full md:w-52 h-48 object-cover rounded-lg">
+
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-xl font-bold text-black dark:text-white mb-2">
+            Limited Edition Soccer Card
+          </h3>
+          <p class="text-sm text-gray-500 mb-3">
+            Highly demanded rare collectible in pristine condition
+          </p>
+          <span class="text-[#C1121F] font-bold text-lg">
+            ₹32,000
+          </span>
+        </div>
+
+        <button class="px-6 py-2 bg-[#C1121F] text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:opacity-90 transition">
+          View Item
+        </button>
+
+      </div>
+
+      <!-- Card 2 -->
+      <div class="flex flex-col md:flex-row items-center gap-6 bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-lg transition">
+
+        <img src="images\img15.avif"
+             class="w-full md:w-52 h-48 object-cover rounded-lg">
+
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-xl font-bold text-black dark:text-white mb-2">
+            Signed Stadium
+          </h3>
+          <p class="text-sm text-gray-500 mb-3">
+            Authentic signature verified collectible item
+          </p>
+          <span class="text-[#C1121F] font-bold text-lg">
+            ₹54,000
+          </span>
+        </div>
+
+        <button class="px-6 py-2 bg-[#C1121F] text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:opacity-90 transition">
+          View Item
+        </button>
+
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flex flex-col md:flex-row items-center gap-6 bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-lg transition">
+
+        <img src="images\img8.jpeg"
+             class="w-full md:w-52 h-48 object-cover rounded-lg">
+
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-xl font-bold text-black dark:text-white mb-2">
+           Basketball Pack
+          </h3>
+          <p class="text-sm text-gray-500 mb-3">
+            A rare bundle from early edition releases
+          </p>
+          <span class="text-[#C1121F] font-bold text-lg">
+            ₹18,500
+          </span>
+        </div>
+
+        <button class="px-6 py-2 bg-[#C1121F] text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:opacity-90 transition">
+          View Item
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="py-24 bg-gradient-to-br from-[#780000] via-[#C1121F] to-[#780000] text-white relative overflow-hidden">
+
+  <!-- Glow Effect -->
+  <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#ffffff30,transparent_70%)]"></div>
+
+  <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+      Turn Your Collection Into Cash
+    </h2>
+
+    <!-- Subtext -->
+    <p class="text-white/80 max-w-2xl mx-auto mb-10 text-sm md:text-base">
+      List your sports cards, jerseys, and memorabilia in minutes. Reach thousands of collectors and start selling today.
+    </p>
+
+    <!-- Buttons -->
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+
+      <!-- Sell Button -->
+      <a href="auction.html" 
+         class="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition duration-300 w-full sm:w-auto text-center">
+        View Auction
+      </a>
+
+      <!-- Browse Button -->
+      <a href="collections.html" 
+         class="px-8 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto text-center">
+        Browse Items
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+  
+  
+  
+  
+  <div id="footer"></div>
+
+  <script src="navbar.js"></script>
+  <script src="footer.js"></script>
+</body>
+
+</html>

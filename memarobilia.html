@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorabilia </title>
+    
+  <script src="tailwind.js"></script>
+  <script>
+    // Configuration for Tailwind: This MUST remain to allow the manual Light/Dark mode toggle
+    // and to ensure the site defaults to Light Mode regardless of your operating system settings.
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link rel="icon" href="images\logo.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C1121F',
+                        crimson: '#780000',
+                        darkbg: '#050505',
+                        panel: '#111111'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body { 
+            overflow-x: hidden; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* VaultCard Signature Button */
+        .vault-btn {
+            background-color: #C1121F;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .vault-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #780000;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        .vault-btn:hover::before {
+            left: 0;
+        }
+
+        /* Museum Spotlight Effect */
+        .spotlight {
+            background: radial-gradient(circle at 50% 0%, rgba(193,18,31,0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-darkbg text-black dark:text-white font-sans antialiased flex flex-col min-h-screen">
+
+    <div id="navbar"></div>
+
+    <section class="relative w-full min-h-[70vh] lg:min-h-[85vh] flex items-center bg-black overflow-hidden pt-20 border-b border-gray-200 dark:border-gray-800">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c3BvcnR8ZW58MHx8MHx8fDA%3D')] bg-cover bg-center opacity-40 grayscale-[30%]"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-white/30 via-black/40 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
+            <div class="max-w-3xl flex flex-col items-center text-center">
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-sm mb-6 shadow-sm">
+                    <i class="fas fa-tshirt text-primary"></i>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-white">Authenticated Relics</span>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black uppercase tracking-tighter text-white leading-[1.05] mb-6 drop-shadow-lg">
+                    Own The <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-crimson">Moment.</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-gray-300 font-bold mb-10 leading-relaxed drop-shadow-md max-w-xl mx-auto">
+                    From game-worn jerseys stained with championship glory to ink-signed artifacts of legends past. Discover the most exclusive sports memorabilia vault in the world.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+                    <a href="memarobilia.html" class="vault-btn px-10 py-4 text-white font-black uppercase tracking-widest text-xs rounded-sm shadow-lg text-center w-full sm:w-auto">
+                        Explore Memorabilia
+                    </a>
+                    <a href="shop.html" class="px-10 py-4 bg-transparent border-2 border-white/30 text-white font-black uppercase tracking-widest text-xs rounded-sm hover:border-white hover:bg-white hover:text-black transition-all text-center w-full sm:w-auto">
+                        Sell Your Relics
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="py-24 bg-white dark:bg-darkbg spotlight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center justify-center text-center mb-16 gap-6">
+                <div>
+                    <span class="text-primary text-[10px] font-black uppercase tracking-widest block mb-2 border-l-2 border-primary pl-2 md:border-l-0 md:border-b-2 md:inline-block md:pb-1">Museum Grade</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight">Featured Artifact</h2>
+                </div>
+                <div class="flex flex-col items-center">
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Auction Closes In</p>
+                    <p class="text-2xl font-black text-primary font-mono animate-pulse">12:45:30</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <div class="relative aspect-square lg:aspect-auto lg:h-full bg-gray-100 dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 overflow-hidden shadow-2xl group">
+                    <img src="images\12.avif" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 z-10">
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-sm border border-white/30">Lot #5001</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-panel border border-gray-200 dark:border-gray-800 rounded-sm p-8 sm:p-10 lg:p-12 flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-black uppercase tracking-widest rounded-sm border border-blue-200 dark:border-blue-800">PSA/DNA Certified</span>
+                            <span class="px-2 py-1 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 text-[9px] font-black uppercase tracking-widest rounded-sm border border-red-200 dark:border-red-800">Game-Worn</span>
+                        </div>
+                        <h3 class="text-3xl lg:text-4xl font-black uppercase tracking-tighter text-black dark:text-white leading-tight mb-4">
+                            Michael Jordan 1998 "Last Dance" Finals Jersey
+                        </h3>
+                        <p class="text-sm lg:text-base font-semibold text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                            An impeccable piece of basketball history. Worn during Game 1 of the 1998 NBA Finals. Features a flawless, bold silver sharpie signature across the back numbering. Photo-matched by MeiGray.
+                        </p>
+                        <div class="space-y-3 pt-6 border-t border-gray-200 dark:border-gray-800">
+                            <div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+                                <span>Condition</span> <span class="text-black dark:text-white">Pristine</span>
+                            </div>
+                            <div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+                                <span>Authentication</span> <span class="text-black dark:text-white">MeiGray / UDA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">Current Bid</p>
+                        <p class="text-4xl lg:text-5xl font-black text-primary mb-6">$1.2M</p>
+                        <button class="vault-btn w-full py-4 text-white font-black uppercase tracking-widest text-xs rounded-sm shadow-lg">
+                            <a href="auction.html">Enter Bidding Room</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50 dark:bg-[#0a0a0a] border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-center mb-16">Explore Categories</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+                <a href="collections.html" class="group relative aspect-square bg-black overflow-hidden rounded-sm border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-85 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end items-center text-center">
+                        <i class="fas fa-tshirt text-2xl text-primary mb-2 transform group-hover:-translate-y-2 transition-transform"></i>
+                        <h3 class="text-sm font-black uppercase tracking-widest text-white">Game-Worn <br> Apparel</h3>
+                    </div>
+                </a>
+                <a href="collections.html" class="group relative aspect-square bg-black overflow-hidden rounded-sm border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1508344928928-7165b67de128?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-85 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end items-center text-center">
+                        <i class="fas fa-baseball-ball text-2xl text-primary mb-2 transform group-hover:-translate-y-2 transition-transform"></i>
+                        <h3 class="text-sm font-black uppercase tracking-widest text-white">Signed <br> Equipment</h3>
+                    </div>
+                </a>
+                <a href="collections.html" class="group relative aspect-square bg-black overflow-hidden rounded-sm border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-85 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end items-center text-center">
+                        <i class="fas fa-ticket-alt text-2xl text-primary mb-2 transform group-hover:-translate-y-2 transition-transform"></i>
+                        <h3 class="text-sm font-black uppercase tracking-widest text-white">Tickets & <br> Programs</h3>
+                    </div>
+                </a>
+                <a href="collections.html" class="group relative aspect-square bg-black overflow-hidden rounded-sm border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-85 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end items-center text-center">
+                        <i class="fas fa-file-signature text-2xl text-primary mb-2 transform group-hover:-translate-y-2 transition-transform"></i>
+                        <h3 class="text-sm font-black uppercase tracking-widest text-white">Historical <br> Documents</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <section class="py-24 bg-white dark:bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row bg-gray-50 dark:bg-panel border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden shadow-xl">
+                <div class="w-full lg:w-1/2 min-h-[400px] lg:min-h-0 bg-[url('https://images.unsplash.com/photo-1471295253337-3ceaaedca402?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center grayscale-[20%] opacity-100 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-800"></div>
+                <div class="w-full lg:w-1/2 p-12 sm:p-16 lg:p-24 flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+                    
+                    <i class="fas fa-quote-left text-4xl text-gray-200 dark:text-white/5 mb-6"></i>
+                    <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter text-black dark:text-white leading-[1.1] mb-6">
+                        Every Stitch <br> <span class="text-primary">Tells a Story.</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 font-semibold leading-relaxed mb-8 text-sm sm:text-base">
+                        Memorabilia isn't just about ink on leather or grass stains on a jersey. It's about capturing a moment in time that defined a generation of sports. VaultCard ensures that history is preserved, authenticated, and securely passed down to the next custodian.
+                    </p>
+                    <a href="about.html" class="inline-block border-b-2 border-primary text-black dark:text-white text-xs font-black uppercase tracking-widest pb-1 w-fit hover:text-primary transition-colors">
+                        Read the VaultCard Mission
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#111] border-b border-gray-800 text-center">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-xs font-black uppercase tracking-widest text-gray-500 mb-8">The VaultCard Authentication Standard</h3>
+            
+            <p class="text-sm font-bold text-gray-400 max-w-2xl mx-auto mb-10">We strictly partner with the industry's most respected forensic authenticators. No item enters the Vault without a verified Letter of Authenticity (LOA).</p>
+
+            <div class="flex flex-wrap justify-center gap-8 sm:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2 font-black text-xl text-white tracking-tighter"><i class="fas fa-search-plus text-primary"></i> JSA</div>
+                <div class="flex items-center gap-2 font-black text-xl text-white tracking-tighter"><i class="fas fa-fingerprint text-primary"></i> PSA/DNA</div>
+                <div class="flex items-center gap-2 font-black text-xl text-white tracking-tighter"><i class="fas fa-microscope text-primary"></i> BECKETT</div>
+                <div class="flex items-center gap-2 font-black text-xl text-white tracking-tighter"><i class="fas fa-shield-alt text-primary"></i> MEIGRAY</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white dark:bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center justify-center text-center mb-16 gap-4">
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">Trending Now</h2>
+                <a href="shop.html" class="text-[10px] font-black uppercase tracking-widest text-primary hover:underline">View All Active</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gray-50 dark:bg-panel border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden flex flex-col group cursor-pointer shadow-sm hover:border-primary/50 transition-colors">
+                    <div class="h-40 bg-black relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-2 left-2 bg-primary text-white text-[8px] font-black uppercase px-2 py-0.5 rounded-sm">Hot</span>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h4 class="text-xs font-black uppercase tracking-tight mb-2 line-clamp-2">Miracle on Ice Puck</h4>
+                        <div class="mt-auto flex justify-between items-end pt-2 border-t border-gray-200 dark:border-gray-800">
+                            <span class="text-lg font-black text-primary">$4,200</span>
+                            <span class="text-[9px] font-bold text-gray-500 uppercase">32 Bids</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 dark:bg-panel border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden flex flex-col group cursor-pointer shadow-sm hover:border-primary/50 transition-colors">
+                    <div class="h-40 bg-black relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h4 class="text-xs font-black uppercase tracking-tight mb-2 line-clamp-2">Steph Curry Game-Worn</h4>
+                        <div class="mt-auto flex justify-between items-end pt-2 border-t border-gray-200 dark:border-gray-800">
+                            <span class="text-lg font-black text-primary">$18,500</span>
+                            <span class="text-[9px] font-bold text-gray-500 uppercase">12 Bids</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 dark:bg-panel border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden flex flex-col group cursor-pointer shadow-sm hover:border-primary/50 transition-colors">
+                    <div class="h-40 bg-black relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558227691-41ea78d1f631?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500 grayscale">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h4 class="text-xs font-black uppercase tracking-tight mb-2 line-clamp-2">Muhammad Ali Signature</h4>
+                        <div class="mt-auto flex justify-between items-end pt-2 border-t border-gray-200 dark:border-gray-800">
+                            <span class="text-lg font-black text-primary">$9,800</span>
+                            <span class="text-[9px] font-bold text-gray-500 uppercase">22 Bids</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 dark:bg-panel border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden flex flex-col group cursor-pointer shadow-sm hover:border-primary/50 transition-colors sm:hidden lg:flex">
+                    <div class="h-40 bg-black relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h4 class="text-xs font-black uppercase tracking-tight mb-2 line-clamp-2"> Bowl Signed Program</h4>
+                        <div class="mt-auto flex justify-between items-end pt-2 border-t border-gray-200 dark:border-gray-800">
+                            <span class="text-lg font-black text-primary">$2,100</span>
+                            <span class="text-[9px] font-bold text-gray-500 uppercase">8 Bids</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <section class="py-24 bg-gradient-to-br from-primary to-crimson text-white relative overflow-hidden">
+        <!-- Subtle Glow Effect -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,white,transparent)]"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-6">
+                Ready to Hunt?
+            </h2>
+            <p class="text-sm md:text-base text-white/80 max-w-xl mx-auto mb-10 leading-relaxed font-bold">
+                Join the premier marketplace for serious collectors. Acquire authenticated memorabilia, securely store it in the Vault, or list it globally.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 w-full md:justify-center">
+                <a href="shop.html" class="px-10 py-4 rounded-full bg-white text-black font-black uppercase tracking-widest text-xs hover:bg-gray-100 transition shadow-xl sm:w-auto">
+                    View Cart
+                </a>
+                <a href="contact.html" class="px-10 py-4 rounded-full border-2 border-white text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition sm:w-auto">
+                    Consign Relics
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+  <div id="footer"></div>
+
+  <script src="navbar.js"></script>
+  <script src="footer.js"></script>
+</body>
+
+</html>

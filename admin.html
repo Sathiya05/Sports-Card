@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    
+  <script src="tailwind.js"></script>
+       <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C1121F',
+                        crimson: '#780000',
+                        darkbg: '#050505',
+                        panel: '#111111'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        html[dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+        html[dir="rtl"] .ml-3 { margin-left: 0 !important; margin-right: 0.75rem !important; }
+        html[dir="rtl"] .mr-2 { margin-right: 0 !important; margin-left: 0.5rem !important; }
+        html[dir="rtl"] .text-left { text-align: right !important; }
+        #sidebar { transition: transform 0.3s ease-in-out; }
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden bg-gray-50 dark:bg-darkbg text-black dark:text-white transition-colors duration-200">
+
+<div id="overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300"></div>
+
+<div class="flex h-screen overflow-hidden relative">
+
+    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 w-72 flex-shrink-0 bg-white dark:bg-panel shadow-2xl lg:shadow-none flex flex-col h-full border-r border-gray-200 dark:border-gray-800 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+
+        <div class="px-6 pt-8 pb-6 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
+            <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i class="fas fa-layer-group text-2xl text-primary"></i>
+                <span class="text-xl font-black tracking-tight uppercase text-black dark:text-white">
+                    Vault<span class="text-primary">Card
+                </span>
+            </a>
+            <button id="closeSidebarBtn" class="lg:hidden w-8 h-8 rounded-sm flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:text-primary transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="lg:hidden px-6 py-4 flex items-center gap-3 border-b border-gray-200 dark:border-gray-800">
+            <button id="mobileRtlToggle" class="w-10 h-10 flex items-center justify-center rounded-sm bg-gray-100 dark:bg-gray-800 text-black dark:text-white border border-transparent hover:border-primary transition-colors">
+                <span class="text-xs font-bold rtl-text">RTL</span>
+            </button>
+            <button id="mobileDarkToggle" class="w-10 h-10 flex items-center justify-center rounded-sm bg-gray-100 dark:bg-gray-800 text-black dark:text-white border border-transparent hover:border-primary transition-colors">
+                <i id="mobileThemeIcon" class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <nav class="mt-4 flex-1 px-4 space-y-2 overflow-y-auto no-scrollbar font-bold uppercase tracking-wider text-xs">
+            <a href="#" data-page="overview" class="nav-link flex items-center px-4 py-3.5 rounded-sm bg-primary/10 dark:bg-primary/20 text-primary border-l-4 border-primary">
+                <i class="fas fa-chart-pie w-6 text-lg"></i>
+                <span class="ml-2 font-black">HQ Overview</span>
+            </a>
+            <a href="#" data-page="auctions" class="nav-link flex items-center px-4 py-3.5 text-gray-500 dark:text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-l-4 border-transparent">
+                <i class="fas fa-gavel w-6 text-lg"></i>
+                <span class="ml-2">Auctions & Bids</span>
+                <span class="ml-auto text-[10px] px-2 py-0.5 rounded-sm bg-primary text-white font-black">LIVE</span>
+            </a>
+            <a href="#" data-page="vault" class="nav-link flex items-center px-4 py-3.5 text-gray-500 dark:text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-l-4 border-transparent">
+                <i class="fas fa-lock w-6 text-lg"></i>
+                <span class="ml-2">Vault Inventory</span>
+            </a>
+            <a href="#" data-page="auth" class="nav-link flex items-center px-4 py-3.5 text-gray-500 dark:text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-l-4 border-transparent">
+                <i class="fas fa-search w-6 text-lg"></i>
+                <span class="ml-2">Authentication</span>
+                <span class="ml-auto text-[10px] px-2 py-0.5 rounded-sm bg-gray-200 dark:bg-gray-700 text-black dark:text-white font-black">12</span>
+            </a>
+            <a href="#" data-page="users" class="nav-link flex items-center px-4 py-3.5 text-gray-500 dark:text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-l-4 border-transparent">
+                <i class="fas fa-users w-6 text-lg"></i>
+                <span class="ml-2">Collectors</span>
+            </a>
+            <a href="#" data-page="analytics" class="nav-link flex items-center px-4 py-3.5 text-gray-500 dark:text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-l-4 border-transparent">
+                <i class="fas fa-chart-line w-6 text-lg"></i>
+                <span class="ml-2">Financials</span>
+            </a>
+
+            <div class="border-t border-gray-200 dark:border-gray-800 my-4"></div>
+
+            <a href="login.html" class="flex items-center px-4 py-3.5 text-gray-500 hover:text-primary transition-colors border-l-4 border-transparent">
+                <i class="fas fa-sign-out-alt w-6"></i>
+                <span class="ml-2">Sign Out</span>
+            </a>
+        </nav>
+
+        <div class="p-5 mt-auto border-t border-gray-200 dark:border-gray-800 flex items-center bg-gray-50 dark:bg-panel">
+            <div class="relative">
+                <div class="w-10 h-10 rounded-sm bg-primary flex items-center justify-center text-white font-black border border-crimson">A</div>
+                <span class="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white dark:border-panel rounded-full"></span>
+            </div>
+            <div class="ml-3">
+                <p class="text-sm font-black uppercase tracking-wider">System Admin</p>
+                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Level 4 Clearance</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col overflow-y-auto w-full">
+
+        <header class="bg-white/95 dark:bg-darkbg/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-6 py-4 sticky top-0 z-30 flex items-center justify-between">
+            <div>
+                <h1 id="pageTitle" class="text-xl font-black uppercase tracking-tight text-black dark:text-white">HQ Overview</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="hidden lg:flex items-center gap-2">
+                    <button id="desktopRtlToggle" class="w-10 h-10 flex items-center justify-center rounded-sm bg-gray-50 dark:bg-panel text-black dark:text-white border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors shadow-sm">
+                        <span class="text-xs font-bold rtl-text">RTL</span>
+                    </button>
+                    <button id="desktopDarkToggle" class="w-10 h-10 flex items-center justify-center rounded-sm bg-gray-50 dark:bg-panel text-black dark:text-white border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors shadow-sm">
+                        <i id="desktopThemeIcon" class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <button id="hamburgerBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-sm bg-primary text-white shadow-md hover:bg-crimson transition-colors">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="p-6 lg:p-8 space-y-8 max-w-7xl mx-auto w-full">
+
+            <div id="page-overview" class="page-content active space-y-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white dark:bg-panel rounded-sm p-6 border border-gray-200 dark:border-gray-800 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">Live Auction </p>
+                        <p class="text-3xl font-black text-black dark:text-white">$4.2M</p>
+                        <p class="text-xs font-bold text-green-600 mt-2"><i class="fas fa-arrow-up"></i> +5.4% this week</p>
+                    </div>
+                    <div class="bg-white dark:bg-panel rounded-sm p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">Assets in Vault</p>
+                        <p class="text-3xl font-black text-black dark:text-white">12,450</p>
+                        <p class="text-xs font-bold text-gray-400 mt-2">Total GMV: $84M</p>
+                    </div>
+                    <div class="bg-white dark:bg-panel rounded-sm p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">A Collectors</p>
+                        <p class="text-3xl font-black text-black dark:text-white">8,942</p>
+                        <p class="text-xs font-bold text-gray-400 mt-2">142 this month</p>
+                    </div>
+                    <div class="bg-white dark:bg-panel rounded-sm p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">Pending Intakes</p>
+                        <p class="text-3xl font-black text-primary">42</p>
+                        <p class="text-xs font-bold text-gray-400 mt-2">Awaiting Grading</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-1 bg-white dark:bg-panel rounded-sm p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <h2 class="text-lg font-black uppercase tracking-tight mb-4 border-b border-gray-200 dark:border-gray-800 pb-2">Action Queue</h2>
+                        <div class="space-y-4 mt-4">
+                            <div class="flex items-center justify-between border-l-2 border-primary pl-3">
+                                <div>
+                                    <p class="text-xs font-black uppercase">Consignment #492</p>
+                                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">High-Value Intake</p>
+                                </div>
+                                <button class="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-[9px] font-black uppercase tracking-widest rounded-sm">Review</button>
+                            </div>
+                            <div class="flex items-center justify-between border-l-2 border-yellow-500 pl-3">
+                                <div>
+                                    <p class="text-xs font-black uppercase">KYC Approval</p>
+                                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">User: M. Johnson</p>
+                                </div>
+                                <button class="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-[9px] font-black uppercase tracking-widest rounded-sm">Review</button>
+                            </div>
+                            <div class="flex items-center justify-between border-l-2 border-gray-400 pl-3">
+                                <div>
+                                    <p class="text-xs font-black uppercase">Vault Check-In</p>
+                                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">Shipment Prep</p>
+                                </div>
+                                <button class="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-[9px] font-black uppercase tracking-widest rounded-sm">Process</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-2 bg-white dark:bg-panel rounded-sm p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <h2 class="text-lg font-black uppercase tracking-tight mb-4 border-b border-gray-200 dark:border-gray-800 pb-2">Auctions Ending Soon</h2>
+                        <div class="overflow-x-auto mt-4">
+                            <table class="w-full text-left text-sm whitespace-nowrap">
+                                <thead class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
+                                    <tr>
+                                        <th class="pb-3">Lot / Item</th>
+                                        <th class="pb-3">Current Bid</th>
+                                        <th class="pb-3">Bids</th>
+                                        <th class="pb-3 text-right">Time Left</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr>
+                                        <td class="py-3">
+                                            <p class="font-black text-xs">1986 Fleer Jordan RC #57 </p>
+                                            <p class="text-[9px] text-gray-400 font-bold uppercase">Lot #1042</p>
+                                        </td>
+                                        <td class="py-3 font-black text-primary">$155,000</td>
+                                        <td class="py-3 font-bold">42</td>
+                                        <td class="py-3 text-right text-primary font-black animate-pulse">00:14:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3">
+                                            <p class="font-black text-xs">2000 Bowman Brady </p>
+                                            <p class="text-[9px] text-gray-400 font-bold uppercase">Lot #1043</p>
+                                        </td>
+                                        <td class="py-3 font-black text-black dark:text-white">$85,250</td>
+                                        <td class="py-3 font-bold">18</td>
+                                        <td class="py-3 text-right font-black">02:45:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-auctions" class="page-content space-y-6">
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 p-6 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-xl font-black uppercase tracking-tight">Auction Management</h2>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">42 Live Lots • 15 Scheduled</p>
+                    </div>
+                    <button class="px-6 py-3 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-sm shadow-md hover:bg-crimson transition-colors">
+                        + Create New Block
+                    </button>
+                </div>
+                
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
+                            <thead class="bg-gray-50 dark:bg-[#151515] text-[10px] uppercase tracking-widest text-gray-500 font-bold border-b border-gray-200 dark:border-gray-800">
+                                <tr>
+                                    <th class="px-6 py-4">Lot ID</th>
+                                    <th class="px-6 py-4">Asset Details</th>
+                                    <th class="px-6 py-4">Reserve / Current</th>
+                                    <th class="px-6 py-4">Status</th>
+                                    <th class="px-6 py-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                    <td class="px-6 py-4 font-bold text-gray-500">#1042</td>
+                                    <td class="px-6 py-4">
+                                        <p class="font-black text-xs">Mickey Mantle 1952 Topps</p>
+                                        <p class="text-[9px] text-gray-400 font-bold uppercase">PSA 8 • Consignor: UID-441</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="text-[10px] text-gray-500 font-bold">No Reserve</p>
+                                        <p class="font-black text-primary">$450,000</p>
+                                    </td>
+                                    <td class="px-6 py-4"><span class="px-2 py-1 rounded-sm bg-green-100 text-green-700 text-[9px] font-black uppercase tracking-widest">Live</span></td>
+                                    <td class="px-6 py-4 text-right"><button class="text-[10px] font-black uppercase text-gray-500 hover:text-primary">Manage</button></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                    <td class="px-6 py-4 font-bold text-gray-500">#1045</td>
+                                    <td class="px-6 py-4">
+                                        <p class="font-black text-xs">LeBron James 2003 Chrome Refractor</p>
+                                        <p class="text-[9px] text-gray-400 font-bold uppercase">BGS 9.5 • Consignor: UID-882</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="text-[10px] text-gray-500 font-bold">Res: $50,000</p>
+                                        <p class="font-black text-black dark:text-white">$32,000</p>
+                                    </td>
+                                    <td class="px-6 py-4"><span class="px-2 py-1 rounded-sm bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-[9px] font-black uppercase tracking-widest">Scheduled</span></td>
+                                    <td class="px-6 py-4 text-right"><button class="text-[10px] font-black uppercase text-gray-500 hover:text-primary">Manage</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-vault" class="page-content space-y-6">
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 p-6 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-xl font-black uppercase tracking-tight">Vault Inventory Master</h2>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">12,450 Assets Secured</p>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <div class="relative w-full sm:w-64">
+                            <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                            <input type="text" placeholder="SEARCH ASSET ID OR USER..." class="w-full pl-9 pr-4 py-2 bg-gray-50 dark:bg-[#0a0a0a] border border-gray-300 dark:border-gray-700 rounded-sm text-[10px] font-bold uppercase tracking-widest outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead class="bg-gray-50 dark:bg-[#151515] text-[10px] uppercase tracking-widest text-gray-500 font-bold border-b border-gray-200 dark:border-gray-800">
+                            <tr>
+                                <th class="px-6 py-4">Asset Tag</th>
+                                <th class="px-6 py-4">Item</th>
+                                <th class="px-6 py-4">Owner ID</th>
+                                <th class="px-6 py-4">Location Bin</th>
+                                <th class="px-6 py-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                <td class="px-6 py-4"><span class="font-black text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-sm">VLT-9921A</span></td>
+                                <td class="px-6 py-4 font-bold text-xs">2000 Bowman Brady RC (PSA 10)</td>
+                                <td class="px-6 py-4 font-bold text-gray-500">UID-441</td>
+                                <td class="px-6 py-4 font-black">SEC-A / R-12 / B-4</td>
+                                <td class="px-6 py-4 text-right"><button class="text-[10px] font-black uppercase text-primary hover:underline">Transfer</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                <td class="px-6 py-4"><span class="font-black text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-sm">VLT-8832B</span></td>
+                                <td class="px-6 py-4 font-bold text-xs">1996 Kobe Bryant RC (BGS 9)</td>
+                                <td class="px-6 py-4 font-bold text-gray-500">UID-102</td>
+                                <td class="px-6 py-4 font-black text-yellow-600">PENDING INTAKE</td>
+                                <td class="px-6 py-4 text-right"><button class="text-[10px] font-black uppercase text-primary hover:underline">Assign Bin</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="page-auth" class="page-content space-y-6">
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+                    <h2 class="text-xl font-black uppercase tracking-tight mb-1">Authentication & Grading Queue</h2>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">12 items awaiting expert review</p>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-gray-100 dark:bg-[#151515] rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center">
+                                <i class="fas fa-image text-gray-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-primary mb-0.5">Raw Submission</p>
+                                <p class="font-black text-sm uppercase">1980 Topps Rickey Henderson</p>
+                                <p class="text-xs font-bold text-gray-500 mt-1">Submitted by: UID-992</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <button class="flex-1 sm:flex-none px-4 py-2 border border-gray-300 dark:border-gray-700 text-[10px] font-black uppercase tracking-widest rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800">Reject</button>
+                            <button class="flex-1 sm:flex-none px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-widest rounded-sm hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-colors">Begin Grading</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-users" class="page-content space-y-6">
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+                    <h2 class="text-xl font-black uppercase tracking-tight">Collector Directory</h2>
+                </div>
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead class="bg-gray-50 dark:bg-[#151515] text-[10px] uppercase tracking-widest text-gray-500 font-bold border-b border-gray-200 dark:border-gray-800">
+                            <tr>
+                                <th class="px-6 py-4">User ID</th>
+                                <th class="px-6 py-4">Name / Email</th>
+                                <th class="px-6 py-4">Tier</th>
+                                <th class="px-6 py-4 text-right">Lifetime Spend</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                <td class="px-6 py-4 font-bold">UID-441</td>
+                                <td class="px-6 py-4">
+                                    <p class="font-black text-xs">M. Collector</p>
+                                    <p class="text-[10px] text-gray-500 font-bold">m.collector@vault.com</p>
+                                </td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-[9px] font-black uppercase rounded-sm border border-yellow-300">Elite</span></td>
+                                <td class="px-6 py-4 text-right font-black">$450,200</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                <td class="px-6 py-4 font-bold">UID-882</td>
+                                <td class="px-6 py-4">
+                                    <p class="font-black text-xs">J. Smith</p>
+                                    <p class="text-[10px] text-gray-500 font-bold">jsmith@example.com</p>
+                                </td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-[9px] font-black uppercase rounded-sm">Standard</span></td>
+                                <td class="px-6 py-4 text-right font-black">$12,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="page-analytics" class="page-content space-y-6">
+                <div class="bg-white dark:bg-panel rounded-sm border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+                    <h2 class="text-xl font-black uppercase tracking-tight">Financial Analytics</h2>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Platform Revenue & Metrics</p>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-panel p-6 rounded-sm border border-gray-200 dark:border-gray-800">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Buyer's Premium (YTD)</span>
+                        <p class="text-3xl font-black mt-2 text-primary">$1.2M</p>
+                    </div>
+                    <div class="bg-white dark:bg-panel p-6 rounded-sm border border-gray-200 dark:border-gray-800">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Consignment Fees (YTD)</span>
+                        <p class="text-3xl font-black mt-2 text-black dark:text-white">$850k</p>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-panel p-6 rounded-sm border border-gray-200 dark:border-gray-800">
+                    <h3 class="font-black uppercase tracking-widest text-sm mb-4">Category Performance</h3>
+                    <p class="text-xs font-bold text-gray-500">📈 Vintage Baseball continues to lead category GMV (45%), followed by Modern Basketball (30%).</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    (function() {
+        const html = document.documentElement;
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const hamburger = document.getElementById('hamburgerBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+        const pageTitle = document.getElementById('pageTitle');
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-content');
+
+        // --- PAGE SWITCHING ---
+        function activatePage(pageId) {
+            pages.forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active');
+
+            const titles = {
+                'overview': 'HQ Overview',
+                'auctions': 'Auctions & Bids',
+                'vault': 'Vault Inventory',
+                'auth': 'Authentication Queue',
+                'users': 'Collector Directory',
+                'analytics': 'Financials'
+            };
+            pageTitle.innerText = titles[pageId] || 'Dashboard';
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                link.classList.remove('bg-primary/10', 'dark:bg-primary/20', 'text-primary', 'border-primary');
+                link.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                
+                const span = link.querySelector('span.ml-2');
+                if(span) span.classList.remove('font-black');
+
+                if (linkPage === pageId) {
+                    link.classList.add('bg-primary/10', 'dark:bg-primary/20', 'text-primary', 'border-primary');
+                    link.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                    if(span) span.classList.add('font-black');
+                }
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                if (page) activatePage(page);
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        activatePage('overview');
+
+        // --- MOBILE SIDEBAR ---
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        if (hamburger) hamburger.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
+        // --- THEME & RTL LOGIC ---
+        const desktopThemeBtn = document.getElementById("desktopDarkToggle");
+        const desktopThemeIcon = document.getElementById("desktopThemeIcon");
+        const mobileThemeBtn = document.getElementById("mobileDarkToggle");
+        const mobileThemeIcon = document.getElementById("mobileThemeIcon");
+        const desktopRtl = document.getElementById("desktopRtlToggle");
+        const mobileRtl = document.getElementById("mobileRtlToggle");
+
+        function applyTheme() {
+            let theme = localStorage.getItem('VaultCard-dark') === 'true';
+            if (theme) {
+                html.classList.add('dark');
+                if (desktopThemeIcon) desktopThemeIcon.className = 'fas fa-sun';
+                if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                if (desktopThemeIcon) desktopThemeIcon.className = 'fas fa-moon';
+                if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('VaultCard-dark', isDark);
+            applyTheme();
+        }
+
+        function toggleRTL() {
+            const isRTL = html.dir === "rtl";
+            html.dir = isRTL ? "ltr" : "rtl";
+            
+            const rtlTexts = document.querySelectorAll('.rtl-text');
+            rtlTexts.forEach(el => el.textContent = isRTL ? "RTL" : "LTR");
+            
+            localStorage.setItem("VaultCard-rtl", !isRTL);
+        }
+
+        if (desktopThemeBtn) desktopThemeBtn.addEventListener('click', toggleTheme);
+        if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleTheme);
+        if (desktopRtl) desktopRtl.addEventListener('click', toggleRTL);
+        if (mobileRtl) mobileRtl.addEventListener('click', toggleRTL);
+
+        applyTheme();
+        const savedRTL = localStorage.getItem("VaultCard-rtl") === "true";
+        if (savedRTL) {
+            html.dir = "rtl";
+            const rtlTexts = document.querySelectorAll('.rtl-text');
+            rtlTexts.forEach(el => el.textContent = "LTR");
+        }
+    })();
+</script>
+</body>
+</html>
