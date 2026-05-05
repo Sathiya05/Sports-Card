@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="flex space-x-3 rtl:space-x-reverse ml-2">
-          <a href="login.html" class="px-4 py-2 text-xs font-bold uppercase tracking-wide text-black dark:text-white border border-gray-300 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors rounded-sm">
+          <a href="login.html" class="px-4 py-2 text-xs font-bold uppercase tracking-wide text-white bg-[#C1121F] hover:bg-[#780000] transition-colors rounded-sm">
             Log In
           </a>
           <a href="signup.html" class="px-4 py-2 text-xs font-bold uppercase tracking-wide text-white bg-[#C1121F] hover:bg-[#780000] transition-colors rounded-sm">
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="grid grid-cols-2 gap-3 mt-2">
-          <a href="login.html" class="text-center px-4 py-3 text-xs font-bold uppercase tracking-wide text-black dark:text-white border border-gray-300 dark:border-white/20 rounded-sm">Log In</a>
+          <a href="login.html" class="text-center px-4 py-3 text-xs font-bold uppercase tracking-wide text-white bg-[#C1121F] rounded-sm">Log In</a>
           <a href="signup.html" class="text-center px-4 py-3 text-xs font-bold uppercase tracking-wide text-white bg-[#C1121F] rounded-sm">Sign Up</a>
         </div>
       </div>
